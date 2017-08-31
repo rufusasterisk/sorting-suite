@@ -1,12 +1,22 @@
 const assert = require('chai').assert;
-const insertionSort = require('../lib/insertion-sort.js');
+const insertionSort = require('../lib/merge-sort.js');
+const randomArray = require('../lib/random-array.js');
 
-describe('Insertion Sort', function(){
+describe('InsertionSort', () => {
 
-  it('should sort an array', function(){
-    let myArray = [8,7,6,5,4,3,2,1];
+  it('should be a function', () => {
+    assert.equal(typeof insertionSort, 'function');
+  })
 
-    assert.deepEqual(insertionSort(myArray), [1,2,3,4,5,6,7,8]);
+  it('should sort an array of 2500', () => {
+    let myArray1 = randomArray(2500, true);
+    let myArray2 = randomArray(2500, true);
+    assert.deepEqual(insertionSort(myArray1), myArray2.sort(function(a,b){return a - b}));
+  })
 
+  it('should sort an array of 5000', () => {
+    let myArray1 = randomArray(5000, true);
+    let myArray2 = randomArray(5000, true);
+    assert.deepEqual(insertionSort(myArray1), myArray2.sort(function(a,b){return a - b}));
   })
 })

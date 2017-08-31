@@ -1,10 +1,22 @@
 const assert = require('chai').assert;
-const bubbleSort = require('../lib/bubble-sort.js');
+const bubbleSort = require('../lib/merge-sort.js');
+const randomArray = require('../lib/random-array.js');
 
-describe('BubbleSort', function(){
+describe('BubbleSort', () => {
 
-  it('should sort numbers', function(){
-    let myArray = [8,7,6,5,4,3,2,1];
-    assert.deepEqual(bubbleSort(myArray), [1,2,3,4,5,6,7,8])
+  it('should be a function', () => {
+    assert.equal(typeof bubbleSort, 'function');
+  })
+
+  it('should sort an array of 2500', () => {
+    let myArray1 = randomArray(2500, true);
+    let myArray2 = randomArray(2500, true);
+    assert.deepEqual(bubbleSort(myArray1), myArray2.sort(function(a,b){return a - b}));
+  })
+
+  it('should sort an array of 5000', () => {
+    let myArray1 = randomArray(5000, true);
+    let myArray2 = randomArray(5000, true);
+    assert.deepEqual(bubbleSort(myArray1), myArray2.sort(function(a,b){return a - b}));
   })
 })
